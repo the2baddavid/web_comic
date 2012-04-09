@@ -11,7 +11,7 @@ include_once('db_object.php');
  * @param type $db Pointer to db object
  * @return type News article found
  */
-function get_latest($db)
+function news_get_latest($db)
 {
     $query = "SELECT name,date_added,article
                 FROM news
@@ -29,7 +29,7 @@ function get_latest($db)
  * @param type $date find specfic article by date added
  * @return type News article found
  */
-function get_news_date($db,$date)
+function news_get_news_date($db,$date)
 {
     $query = "SELECT name,date_added,article
                 FROM news
@@ -46,7 +46,7 @@ function get_news_date($db,$date)
  * @param type $number find specific article by order added
  * @return type News article found
  */
-function get_news_number($db,$number)
+function news_get_news_number($db,$number)
 {
     $query = "SELECT name,date_added,article
                 FROM news

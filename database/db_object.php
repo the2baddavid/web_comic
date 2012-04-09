@@ -17,12 +17,12 @@ class DB_OBJECT
      * @param type $var3    db username
      * @param type $var4    db password
      */
-    public function __construct($var1,$var2,$var3,$var4)
+    public function __construct($server_name,$db_name,$user,$pass)
     {
-       $this->server = $var1;
-       $this->db = $var2;
-       $this->uname = $var3;
-       $this->upass = $var4;
+       $this->server = $server_name;
+       $this->db = $db_name;
+       $this->uname = $user;
+       $this->upass = $pass;
        
        $this->link = mysql_connect($this->server,$this->uname,$this->upass);
        mysql_select_db($this->db);

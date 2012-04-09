@@ -20,7 +20,7 @@ include_once('db_object.php');
  * @param type $db  database pointer
  * @return type image path for latest comic
  */
-function get_latest($db)
+function comics_get_latest($db)
 {
     $query = "SELECT image_path
                 FROM comics
@@ -39,7 +39,7 @@ function get_latest($db)
  * @param type $book    book name
  * @return type Sock Array of all comics for book, with bookname, chapter, imagepath
  */
-function get_book($db,$book)
+function comics_get_book($db,$book)
 {
     $query = "SELECT book,chapter,image_path
                 FROM comics

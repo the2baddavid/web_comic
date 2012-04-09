@@ -6,5 +6,6 @@
  */
 
 include ('error.php');
+include('../database/db_object.php');
 
 ?>

@@ -18,7 +18,7 @@ include_once('db_object.php');
  * @param type $id  Id of specific image
  * @return type     image path
  */
-function get_image_by_id($db,$id)
+function images_get_image_by_id($db,$id)
 {
     $query = "SELECT image_path
                 FROM images
@@ -35,7 +35,7 @@ function get_image_by_id($db,$id)
  * @param type $name name of image to find
  * @return type path of image
  */
-function get_image_by_name($db,$name)
+function images_get_image_by_name($db,$name)
 {
     $query = "SELECT image_path
                 FROM images
@@ -51,7 +51,7 @@ function get_image_by_name($db,$name)
  * @param type $db  database pointer
  * @return type Sock Array for all the Images
  */
-function get_all_images($db)
+function images_get_all_images($db)
 {
     $query = "SELECT name,image_path
                 FROM images";
