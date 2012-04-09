@@ -5,6 +5,6 @@
  * 
  */
 
-
+include ('error.php');
 
 ?>
