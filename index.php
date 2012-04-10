@@ -26,35 +26,43 @@ display_menu();     // if horizontal then this should also span 24
 /*  
  *  Stuff Above is needed for most pages, and you can just copy paste this
  */
-  
-/*
+?>  
 
 <!-- Stuff that is specific to a page goes here -->
 
-<div id="home-comic" class="span-16">
-    <!--    This will be where we display the latest comic, however we
-            must be sure that the image doesn't try to push over into
-            where the news goes.  Make sure image size is specified
-            Following should word for getting the path of the most recent
-            comic added.-->
-    
-    <img id ="news_latest" height="" width="" alt=""
-         src="<?php comics_get_latest($db); ?>"></img>
-</div>
+    <div id="home-comic" class="span-15">
+        <!--    This will be where we display the latest comic, however we
+                must be sure that the image doesn't try to push over into
+                where the news goes.  Make sure image size is specified
+                Following should word for getting the path of the most recent
+                comic added.-->
 
-<div id="home-news" class="span-8">
-    <!--    Here we can display the news for the home page.
-            We can use the span to keep it within its own block -->
+        <img id ="comic_latest" alt="latest comic"
+            src="images/stock_image.jpg"></img>
+                <?php
+                //  Remove Above Junk
+                //  comics_get_latest($db);
+                ?>
+    </div>
     
-    <p>
-        <?php news_get_latest($db);?>
-    </p>
-</div>
-
+    <div id="home-news" class="span-8">
+        <!--    Here we can display the news for the home page.
+                We can use the span to keep it within its own block -->
+        <p>
+            This will be where we display the latest news and comic, however we
+                must be sure that the image doesn't try to push over into
+                where the news goes.  Make sure image size is specified
+                Following should word for getting the path of the most recent
+                comic added.
+            <?php 
+            //  remove dummy paragraph
+            //news_get_latest($db);
+            ?>
+        </p>
+    </div>
 
 <!-- Back to Php for the footer! -->
-
-*/
+<?php
 
 display_footer();
 
