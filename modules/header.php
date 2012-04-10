@@ -13,7 +13,11 @@ function display_header()
 {
     echo <<< _END
     
-    insert header/banner here!
+    <div id="header class="span-24">
+        <h1>insert header/banner here!</h1>
+            </div>
+
+    
     
 _END;
 }

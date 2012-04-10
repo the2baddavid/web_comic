@@ -9,7 +9,14 @@ function display_footer()
 {
     echo <<< _END
     
-    insert footer here!
+	echo <<< _END
+		<div id="footer" class="span-24">
+		<h5>Insert Footer Here!</h3>
+		</div>
+	</div> <!-- Close Container -->
+</body>     <!-- Close Body -->
+</html>
+_END;
     
 _END;
 }

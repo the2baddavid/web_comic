@@ -9,7 +9,8 @@
  * we can leave the other stuff in the webpage folder if we want though
  */
 
-include('modules/modules.php');
+include_once('modules/modules.php');
+include_once('database/db_object.php');  
 
 $server_name='localhost';
 $db_name='';
@@ -26,7 +27,7 @@ display_menu();     // if horizontal then this should also span 24
  *  Stuff Above is needed for most pages, and you can just copy paste this
  */
   
-?>
+/*
 
 <!-- Stuff that is specific to a page goes here -->
 
@@ -53,7 +54,7 @@ display_menu();     // if horizontal then this should also span 24
 
 <!-- Back to Php for the footer! -->
 
-<?php
+*/
 
 display_footer();
 
