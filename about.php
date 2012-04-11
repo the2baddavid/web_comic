@@ -1,8 +1,9 @@
 <?php
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * About Page for Apex
+ * 
+ * TODO: Add Spot for About on database and way to modify it
  */
 
 include_once('modules/modules.php');
@@ -20,6 +21,8 @@ display_header();   // Span should be 24, the entire page
 display_menu();     // if horizontal then this should also span 24
 ?>
 <!-- Stuff that is specific to a page goes here -->
+
+
 
 
 <!-- Back to Php for the footer! -->

@@ -1,8 +1,7 @@
 <?php
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Comics Page, will allow for browsing of all the current comics
  */
 
 include_once('modules/modules.php');
