@@ -40,7 +40,7 @@ module Blueprint
     def generate!
       output_header       # information to the user (in the console) describing custom settings
       generate_css_files  # loops through Blueprint::CSS_FILES to generate output CSS
-      generate_tests      # updates HTML with custom namespaces in order to test the generated library.  TODO: have tests kick out to custom location
+      generate_tests      # updates HTML with custom namespaces in order to test the generated library. 
       output_footer       # informs the user that the CSS generation process is complete
     end
 
