@@ -14,7 +14,7 @@ function display_header()
     echo <<< _END
     
     <div id="header class="span-24">
-        <h1>insert header/banner here!</h1>
+       <img src= "../images/banner.gif" width="900" height="200"/>
             </div>
 
     
