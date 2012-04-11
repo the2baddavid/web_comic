@@ -9,7 +9,15 @@ function display_footer()
 {
 echo <<< _END
 		<div id="footer" class="span-24">
-		<h5>Insert Footer Here!</h3>
+                    <a>Home</a>
+                    <a>Comics</a>
+                    <a>Extras</a>
+                    <a>About</a>
+                    <table>
+                        <td>Copyright: Apex Copics</td>
+                        <td>Design by: Ascii Abstractions</td>
+                    </table>
+                    
 		</div>
 	</div> <!-- Close Container -->
 </body>     <!-- Close Body -->
