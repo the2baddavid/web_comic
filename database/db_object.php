@@ -46,13 +46,18 @@ class DB_OBJECT
         $this->last_result = mysql_query($query);
     }
     
+    public function getAllRowsNum()
+    {        
+        return  mysql_fetch_array($this->last_result,'MYSQL_NUM');       
+    }
+    
     /**
      *  Returns 1 row as an associative array from the query
      * @return type Sock Array with Query Result
      */
     public function getRowSock()
     {
-        return mysql_fetch_assoc($this->last_result);
+        return mysql_fetch_row($this->last_result);
     }
     
     /**
@@ -61,13 +66,7 @@ class DB_OBJECT
      */
     public function getAllRowsSock()
     {
-        $my_array = array();
-        foreach($this->last_result as $temp)
-        {
-            $pushme = mysql_fetch_assoc($temp);
-            array_push($pushme,$my_array);
-        }
-        return $my_array;
+        return mysql_fetch_array($this->last_result,'MYSQL_ASSOC');
     }
 }
 ?>

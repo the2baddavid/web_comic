@@ -15,6 +15,10 @@ CREATE TABLE comics(
     date_added DATE,
     image_path VARCHAR(50)) ENGINE INNODB;
 
+CREATE TABLE book_names(
+    id INT UNSIGNED NOT NULL PRIMARY KEY,
+    b_name VARCHAR(50)) ENGINE INNODB;
+
 CREATE TABLE images(
     id INT UNSIGNED NOT NULL PRIMARY KEY,
     i_name VARCHAR(50),

@@ -38,7 +38,7 @@ display_menu();     // if horizontal then this should also span 24
                 comic added.-->
 
         <img id ="comic_latest" alt="latest comic"
-            src="images/stock_image.jpg"></img>
+            src="comics/stock_image.jpg"></img>
                 <?php
                 //  Remove Above Junk
                 //  comics_get_latest($db);

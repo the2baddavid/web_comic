@@ -29,10 +29,13 @@ display_menu();     // if horizontal then this should also span 24
         		hardcoded are made into a php module, but hardcoded will probably
         		be best.-->
         <p>
-            This will be where the information about the creators of Apex Comics can
+                This will be where the information about the creators of Apex Comics can
             	give information about themsevles and their work in orderro inform other 
             	readers. Probably won't change to much, and we will be sure to make room
             	for pictures if necessary.
+                <?php
+                    echo get_about_latest($db);
+                ?>
         </p>
         
         </div>
