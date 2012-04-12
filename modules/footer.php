@@ -14,7 +14,7 @@ echo <<< _END
                     <a href="extras.php" id="alt-menu-extras">Extras</a>
                     <a href="about.php" id="alt-menu-about">About</a>
                     <table>
-                        <td>Copyright: Apex Copics</td>
+                        <td>Copyright: Apex Comics</td>
                         <td>Design by: Ascii Abstractions</td>
                     </table>
                     

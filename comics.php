@@ -2,6 +2,10 @@
 
 /*
  * Comics Page, will allow for browsing of all the current comics
+ * 
+ * Function calls for loading all comics by title (and display their title page)
+ * Function calls for displaying individual chapters for each comic, (plus recent update)
+ * 	-When page is clicked, direct them to the reader, loading that page first
  */
 
 include_once('modules/modules.php');

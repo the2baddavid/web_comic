@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Extras Page
+ * Extras Page, for the extras for the sites (jokes, fanart, promo material, etc.)
  */
 
 include_once('modules/modules.php');
