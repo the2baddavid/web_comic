@@ -13,15 +13,18 @@ include_once('db_object.php');
  */
 function news_get_latest($db)
 {
-    $query = "SELECT name,date_added,article
+    $query = "SELECT name,article
                 FROM news
-                ORDER BY id desc
-                LIMIT 1";
-        
-    $db->query($query);
-    $news = $db->getRowSock();
+                WHERE name!='about'
+                ORDER BY date_added DESC
+                LIMIT 0,1";
+    
+    $result = mysql_query($query,$db) or die("bad query");
+    $news = mysql_fetch_assoc($result);
+    
     return $news;
 }
+
 
 /**
  *
@@ -33,10 +36,14 @@ function news_get_news_date($db,$date)
 {
     $query = "SELECT name,date_added,article
                 FROM news
-                WHERE date_added = $date";
+                WHERE date_added = $date
+                AND name!='about'
+                ORDER BY date_added DESC
+                LIMIT 0,1";
     
-    $db->query($query);
-    $news = $db->getRowSock();
+    $result = mysql_query($query,$db) or die("bad query");
+    $news = mysql_fetch_assoc($result);
+    
     return $news;
 }
 
@@ -52,8 +59,9 @@ function news_get_news_number($db,$number)
                 FROM news
                 WHERE id = $number";
     
-    $db->query($query);
-    $news = $db->getRowSock();
+    $result = mysql_query($query,$db) or die("bad query");
+    $news = mysql_fetch_assoc($result);
+    
     return $news;
 }
 ?>

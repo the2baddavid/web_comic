@@ -8,25 +8,39 @@
  * 	-When page is clicked, direct them to the reader, loading that page first
  */
 
-include_once('modules/modules.php');
-include_once('database/db_object.php');  
+/****************************************************************
+ * Inclusions & Database Connecting
+ ****************************************************************/
+    include_once('modules/modules.php');
+    include_once('database/db_object.php');  
+    include_once('queries/get_comics.php');
 
-$server_name='localhost';
-$db_name='';
-$user='user';
-$pass='pass';
-
-$db = new DB_OBJECT($server_name, $db_name, $user, $pass);
-
-display_start();    // No Span
-display_header();   // Span should be 24, the entire page
-display_menu();     // if horizontal then this should also span 24
+    $con = mysql_connect("localhost","user","pass");
+    if(!$con) die('Could not connect: ' . mysql_error());
+    mysql_select_db("webcomic",$con);
+/****************************************************************
+ * Start Web Page! Load Modules
+ ****************************************************************/
+    display_start();   
+    display_header();  
+    display_menu();    
+/****************************************************************
+ * Unique Page Info
+ ****************************************************************/
 ?>
-<!-- Stuff that is specific to a page goes here -->
 
-<!-- Back to Php for the footer! -->
+
+
+
 <?php
+/****************************************************************
+ * Finish With the Footer
+ ****************************************************************/
+    display_footer();
 
-display_footer();
 
+
+/****************************************************************
+ * End of Page -- Additional Functions
+ ****************************************************************/
 ?>

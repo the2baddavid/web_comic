@@ -20,7 +20,7 @@ function display_start()
 </head>
 
 <body>
-    <div class="container" class="span-24">
+    <div class="container">
 _END;
 }
 

@@ -12,8 +12,6 @@
     date_added DATE,
     image_path VARCHAR(50)) ENGINE INNODB;
  */
-include_once('db_object.php');
-
 
 /**
  *  Gets latest comic added
@@ -24,12 +22,11 @@ function comics_get_latest($db)
 {
     $query = "SELECT image_path
                 FROM comics
-                ORDER BY id desc
-                LIMIT 1";
-    $db->query($query);
+                ORDER BY id DESC
+                LIMIT 0,1";
+    $result = mysql_query($query,$db) or die("bad query");
+    $comic = mysql_fetch_assoc($result);   
     
-    $db->query($query);
-    $comic = $db->getRow();    
     return $comic['image_path'];
 }
 
@@ -46,18 +43,28 @@ function comics_get_book($db,$book)
                 WHERE book_names.b_name = $book
                 AND comics.$book = book_names.b_name
                 ORDER BY chapter";
-    $db->query($query);
-    $comic = $db->getAllRowsSock();
+    $result = mysql_query($query,$db) or die("bad query");
+    
+    $comic = array();
+    while($temp = mysql_fetch_assoc($result))
+    {
+        array_push($comic,$temp);
+    }
     return $comic;
 }
 
-function comics_get_booknames($db)
+/**
+ *  Gets Prints Proper HTML line to display book names straight into radio choices
+ * @param type $db 
+ */
+function display_book_choices($db)
 {
-    $query = "SELECT b_names
-                FROM book_names";
-    $db->query($query);
-    $names = $db->getAllRowsNum();
-    return $names;
+    $query = "SELECT b_name FROM book_names";
+    $result = mysql_query($query,$db);
+        
+    while ($temp = mysql_fetch_assoc($result))
+    {
+        echo "<input name='book_name' type='radio' value=".$temp['b_name'].">".$temp['b_name']." </input><br/>";
+    }
 }
-
 ?>
