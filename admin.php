@@ -11,10 +11,6 @@
  * TODO: Test News Add & Comic Add
  */
 
-    if(!isset($_COOKIE['user'])){
-        setcookie('user',time(),time()+60*60);
-    }
-
 /****************************************************************
  * Inclusions & Database Connecting
  ****************************************************************/

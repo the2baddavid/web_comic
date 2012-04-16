@@ -11,20 +11,15 @@
  * TODO: Increase Font Size
  */
 
-    if(!isset($_COOKIE['user'])){
-        setcookie('user',time(),time()+60*60);
-    }
-
 /****************************************************************
  * Inclusions & Database Connecting
  ****************************************************************/
-include_once('modules/modules.php');
-include_once('database/db_object.php');  
-include_once('queries/get_comics.php');
-include_once('queries/get_news.php');
+    include_once('modules/modules.php');
+    include_once('queries/get_comics.php');
+    include_once('queries/get_news.php');
 
     $con = mysql_connect("localhost","user","pass");
-    if(!$con) die('Could not connect: ' . mysql_error());
+    if(!$con) die('Could not connect: '.mysql_error());
     mysql_select_db("webcomic",$con);
     
 /****************************************************************
@@ -43,7 +38,7 @@ include_once('queries/get_news.php');
     <div id="home-comic" class="span-15">
         <?php
             $comic = comics_get_latest($con);
-            echo "<img id ='comic_latest' alt='latest comic' src=$comic height='800' width='400'> </img>"
+            echo "<img id ='comic_latest' alt='latest comic' src=$comic height='800' width='400'> </img>";
         ?>
     </div>
     

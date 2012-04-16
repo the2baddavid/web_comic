@@ -8,9 +8,6 @@
  * numerical array holding sock arrays with all the information for each chapter
  */
 
-    if(!isset($_COOKIE['user'])){
-        setcookie('user',time(),time()+60*60);
-    }
 
 /****************************************************************
  * Inclusions & Database Connecting
@@ -34,11 +31,18 @@
  ****************************************************************/
 
 echo '<div id="comic-viewer" class="span-12">';
-    // TODO: Need way to get the book selected
-    $comics = comics_get_book_and_comic($con, $book);
-    $comic_num=0;
-      echo "<h3>".$comics[$comic_num]['b_name'].",".$comics[$comic_num]['chapter']."</h3>";
-      echo "<img id='current-comic' src=".$comics[$comic_num]['image_path']."></img>";
+    // get the book selected
+    $comics = comics_get_book_and_comic($con, $_GET['book']);
+    $chapter = $_GET['chapter'];
+    
+    // print book & chapter
+    echo "<h3>".$_GET['book']."</h3>";
+    
+    // print selected image from book
+    echo "<img href=".$comics[$chapter]." id='current-comic'/>";
+    
+    // print caption?
+    
 echo '</div>';
 
 /****************************************************************
