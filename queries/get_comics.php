@@ -50,7 +50,6 @@ function comics_get_book_and_comic($db,$book)
     {
         array_push($comic,$temp);
     }
-<<<<<<< HEAD
     return $comic;
 }
 
@@ -91,8 +90,6 @@ function comics_get_chapters($db,$book)
     {
         array_push($comic,$temp);
     }
-=======
->>>>>>> 5d6a912f6699a2f2828bb760701ee6f4590b3c59
     return $comic;
 }
 

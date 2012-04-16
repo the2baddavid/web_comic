@@ -46,7 +46,7 @@
             
             foreach($chapter as $temp_chapter)
             {
-                echo "<a href=''>".$temp_chapter['chapter']."</a><br/>";
+                echo "<a href=".$temp_chapter['image_path'].">".$temp_chapter['chapter']."</a><br/>";
             }
         }
     ?>
