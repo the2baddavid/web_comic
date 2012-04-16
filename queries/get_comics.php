@@ -38,10 +38,9 @@ function comics_get_latest($db)
  */
 function comics_get_book_and_comic($db,$book)
 {
-    $query = "SELECT book_names.b_name,comics.chapter,comics.image_path
+    $query = "SELECT book_names.b_name, comics.chapter, comics.image_path
                 FROM comics,book_names
-                WHERE book_names.b_name = $book
-                AND comics.$book = book_names.b_name
+                WHERE comics.book = $book
                 ORDER BY chapter";
     $result = mysql_query($query,$db) or die("bad query");
     

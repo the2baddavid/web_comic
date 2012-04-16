@@ -4,6 +4,10 @@
  * Extras Page, for the extras for the sites (jokes, fanart, promo material, etc.)
  */
 
+    if(!isset($_COOKIE['user'])){
+        setcookie('user',time(),time()+60*60);
+    }
+
 /****************************************************************
  * Inclusions & Database Connecting
  ****************************************************************/

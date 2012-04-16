@@ -1,11 +1,11 @@
 <?php
 
 /*
- * Comics Page, will allow for browsing of all the current comics
+ *  Standalone Viewer for comics
  * 
- * Function calls for loading all comics by title (and display their title page)
- * Function calls for displaying individual chapters for each comic, (plus recent update)
- * 	-When page is clicked, direct them to the reader, loading that page first
+ * $comic_num determines which chapter of the book is displayed, defaults to 0
+ * All the information for a book is dumped into $comics, which is a 
+ * numerical array holding sock arrays with all the information for each chapter
  */
 
     if(!isset($_COOKIE['user'])){
@@ -17,7 +17,8 @@
  ****************************************************************/
     include_once('modules/modules.php');
     include_once('database/db_object.php');  
-    include_once('queries/get_comics.php');
+    include_once('queries/get_about.php');
+    include_once('queries/get_images.php');
 
     $con = mysql_connect("localhost","user","pass");
     if(!$con) die('Could not connect: ' . mysql_error());
@@ -26,43 +27,24 @@
  * Start Web Page! Load Modules
  ****************************************************************/
     display_start();   
-    display_header();  
-    display_menu();    
+    display_header(); 
+    display_menu();   
 /****************************************************************
  * Unique Page Info
  ****************************************************************/
 
-    /*  Table 
-     * Framework for Comics
-     *      Print Each Book
-     *          Print Corresponding Comics
-     */
-?>
+echo '<div id="comic-viewer" class="span-12">';
+    // TODO: Need way to get the book selected
+    $comics = comics_get_book_and_comic($con, $book);
+    $comic_num=0;
+      echo "<h3>".$comics[$comic_num]['b_name'].",".$comics[$comic_num]['chapter']."</h3>";
+      echo "<img id='current-comic' src=".$comics[$comic_num]['image_path']."></img>";
+echo '</div>';
 
-<div id="comics" class="span-14">
-    <?php
-        $book = comics_get_books($con);
-        
-        foreach ($book as $temp_book)
-        {
-            echo "<h3>".$temp_book['b_name']."</h3>";
-            $chapter = comics_get_chapters($con, $temp_book['id']);
-            
-            foreach($chapter as $temp_chapter)
-            {
-                echo "<a href='viewer.php?book=".$temp_chapter['book']."&chapter=".$temp_chapter['chapter']."'>".$temp_chapter['chapter']."</a><br/>";
-            }
-        }
-    ?>
-</div>
-
-?>
-
-<?php
 /****************************************************************
  * Finish With the Footer
  ****************************************************************/
-    display_footer();
+display_footer();
 
 
 
@@ -70,3 +52,4 @@
  * End of Page -- Additional Functions
  ****************************************************************/
 ?>
+
