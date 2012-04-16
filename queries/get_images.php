@@ -24,8 +24,9 @@ function images_get_image_by_id($db,$id)
                 FROM images
                 WHERE id = $id";
     
-    $db->query($query);
-    $image = $db->getRow();    
+    $result = mysql_query($query,$db) or die("bad query");
+    $image = mysql_fetch_assoc($result);   
+    
     return $image['image_path'];
 }
 
@@ -39,10 +40,11 @@ function images_get_image_by_name($db,$name)
 {
     $query = "SELECT image_path
                 FROM images
-                WHERE i_name = $name";
+                WHERE i_name = '$name'";
     
-    $db->query($query);
-    $image = $db->getRow();    
+    $result = mysql_query($query,$db) or die("bad query");
+    $image = mysql_fetch_assoc($result);   
+    
     return $image['image_path'];
 }
 
@@ -56,8 +58,13 @@ function images_get_all_images($db)
     $query = "SELECT name,image_path
                 FROM images";
     
-    $db->query($query);
-    $image = $db->getAllRowsSock();    
+    $result = mysql_query($query,$db) or die("bad query");
+    
+    $image = array();
+    while($temp= mysql_fetch_assoc($result))
+    {
+        array_push($image,$temp);
+    }
     return $image;
 }
 ?>
