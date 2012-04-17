@@ -42,7 +42,9 @@ function add_news($db,$post)
     if(!$success) 
         die("<p> Uh, something went wrong...<br/>".mysql_error()."<br/>".$query."</p>");
     else 
-        echo "<p> Successful Upload </p>";
+        echo "<p> Successful Upload </br>
+            Title: $title <br/>
+            Article: $article</p>";
 }
 ?>
 

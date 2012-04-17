@@ -10,7 +10,6 @@
     i_name VARCHAR(50),
     image_path VARCHAR(50)) ENGINE INNODB;
  */
-include_once('db_object.php');
 
 /**
  *  Returns Path for Specific Image

@@ -7,8 +7,6 @@
 /****************************************************************
  * Inclusions & Database Connecting
  ****************************************************************/
-    include_once('modules/modules.php');
-    include_once('database/db_object.php');  
     include_once('queries/get_comics.php');
 
     $con = mysql_connect("localhost","user","pass");

@@ -3,7 +3,6 @@
 /*
  * Queries to get the news for the Front Page
  */
-include_once('db_object.php');
 
 
 /**
@@ -16,7 +15,7 @@ function news_get_latest($db)
     $query = "SELECT name,article
                 FROM news
                 WHERE name!='about'
-                ORDER BY date_added DESC
+                ORDER BY news.id DESC
                 LIMIT 0,1";
     
     $result = mysql_query($query,$db) or die("bad query");
