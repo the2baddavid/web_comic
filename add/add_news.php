@@ -3,7 +3,7 @@
 /*
  * Add News Script
  * 
- * TODO: 
+ * TODO: Add Auto Revert Back to Page with JS? 
  * 
  * Removed inclusions since they are not needed
  */
@@ -45,7 +45,9 @@ function add_news($db,$post)
     if(!$success) 
         die("<p> Uh, something went wrong...<br/>".mysql_error()."<br/>".$query."</p>");
     else 
-        echo "<p> Successful Upload </p>";
+        echo "  <p> Successful Upload </p>
+                <a href='admin.php'>Admin</a> 
+                <a href='index.php>Home</a>";
 }
 ?>
 

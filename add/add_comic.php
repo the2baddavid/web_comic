@@ -3,6 +3,9 @@
 /*
  *  TODO: Test if add_comic works as a function
  *  TODO: test names for uploaded files
+ * 
+ *  W3 Resource!
+ *  http://www.w3schools.com/php/php_file_upload.asp
  */
 /****************************************************************
  * Inclusions & Database Connecting
