@@ -52,7 +52,7 @@
             <h3>Add Comic: </h3>
             
             <h4>Add to Existing Book, or Create New?</h4>
-            <input type="radio" name="book_name" value="yes"> New Book </input>
+            <input type="radio" name="book_name" value="yes"/> New Book
             <input type="text" name="new_name" ></input><br/>
             <?php
                 display_book_choices($con); 

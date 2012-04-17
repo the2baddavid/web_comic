@@ -17,19 +17,19 @@
 /****************************************************************
  * Load web page, then revert back after adding
  ****************************************************************/
-    add_news($con,$_POST);
-    ?>    
- 
-    <div id="revert" onLoad="setTimeout('move()', 1000)"></div>
-
+    echo <<< _END
+    
+    <html><head>
     <script type="text/javascript">
         function move(){
             window.location='../index.php';
         }
-    </script> 
+    </script>
+    <body onload="setTimeout('move()', 1000)">
+_END;
     
-    
-    <?php
+    add_news($con,$_POST);
+	echo "</body></head></html>";
 /****************************************************************
  * Functions
  ****************************************************************/
