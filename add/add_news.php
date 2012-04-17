@@ -1,24 +1,21 @@
 <?php
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Add News Script
+ * 
+ * Removed inclusions since they are not needed
  */
 /****************************************************************
  * Inclusions & Database Connecting
  ****************************************************************/
-    include_once('modules/modules.php');
-    include_once('database/db_object.php');
-
-    $con = mysql_connect("localhost","user","pass");
+   $con = mysql_connect("localhost","user","pass");
     if(!$con) die('Could not connect: ' . mysql_error());
     mysql_select_db("webcomic",$con);
+
 /****************************************************************
  * Load web page, then revert back after adding
  ****************************************************************/
-    
-    $success = add_news($con,$_POST);
-    if(!$success) echo "<p>".mysql_error()."</p>";
+    add_news($con,$_POST);
     ?>    
  
 <div id="revert" onLoad="setTimeout('move()', 1000)"></div>
@@ -34,17 +31,18 @@
  * Functions
  ****************************************************************/
 
-function add_news($con,&$post)
-{   
-    $query = "INSERT INTO news(name,article,date_added) VALUES (".$post['news_title'].",".$post['news_article'].","'date(\'Y-m-d\')'")";
-    $success = mysql_query($query,$con) or die("failed to add news".mysql_error());
-    return $success;
-}
-
-function add_news($db,$title,$article)
+function add_news($db,$post)
 {
-    $query = "INSERT INTO news(name,article,date) VALUES ($title,$article,'CURDATE()')";
-    $db->query($query);
+    $title = $post['news_title'];
+    $article = $post['news_article'];
+    
+    $query = "INSERT INTO news(name,article,date_added) VALUES ('$title','$article',CURDATE())";
+    $success = mysql_query($query,$db);
+    
+    if(!$success) 
+        die("<p> Uh, something went wrong...<br/>".mysql_error()."<br/>".$query."</p>");
+    else 
+        echo "<p> Successful Upload </p>";
 }
 ?>
 

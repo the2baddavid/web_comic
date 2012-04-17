@@ -40,16 +40,19 @@ function comics_get_book_and_comic($db,$book)
 {
     $query = "SELECT book_names.b_name, comics.chapter, comics.image_path
                 FROM comics,book_names
-                WHERE comics.book = $book
+                WHERE comics.book = $book AND comics.book = book_names.id
                 ORDER BY chapter";
     $result = mysql_query($query,$db) or die("bad query");
     
+    return mysql_fetch_assoc($result);
+    /*
     $comic = array();
     while($temp = mysql_fetch_assoc($result))
     {
         array_push($comic,$temp);
     }
     return $comic;
+    */
 }
 
 /**

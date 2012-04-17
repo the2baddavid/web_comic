@@ -31,9 +31,12 @@
  ****************************************************************/
 
 echo '<div id="comic-viewer" class="span-12">';
-    // get the book selected
-    $comics = comics_get_book_and_comic($con, $_GET['book']);
+    // Extract $_GET info
+    $book = $_GET['book'];
     $chapter = $_GET['chapter'];
+    
+    // Query Database
+    $comics = comics_get_book_and_comic($con, $book);
     
     // print book & chapter
     echo "<h3>".$_GET['book']."</h3>";
