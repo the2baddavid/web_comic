@@ -3,12 +3,9 @@
 /*
  * Admin Page
  * 
- * Function calls for uploading/editing comics
- * Function calls for uploading/editing news
- * Function calls for uploading/editing about pages
  * Function calls for uploading/editing extras?
  * 
- * TODO: Test News Add & Comic Add
+ * 
  */
 
 /****************************************************************

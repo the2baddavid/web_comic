@@ -3,6 +3,10 @@
 /*
  *  Standalone Viewer for comics
  * 
+ * TODO: Image not showing up
+ * TODO: Use JS to scroll through images
+ * TODO: Caption for images?
+ * 
  * $comic_num determines which chapter of the book is displayed, defaults to 0
  * All the information for a book is dumped into $comics, which is a 
  * numerical array holding sock arrays with all the information for each chapter
@@ -12,8 +16,7 @@
 /****************************************************************
  * Inclusions & Database Connecting
  ****************************************************************/
-    include_once('modules/modules.php');
-    include_once('database/db_object.php');  
+    include_once('modules/modules.php'); 
     include_once('queries/get_about.php');
     include_once('queries/get_images.php');
 

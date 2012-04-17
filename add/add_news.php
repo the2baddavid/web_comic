@@ -3,6 +3,8 @@
 /*
  * Add News Script
  * 
+ * TODO: Fix, populating blank info from get variable
+ * 
  * Removed inclusions since they are not needed
  */
 /****************************************************************
