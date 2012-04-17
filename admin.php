@@ -34,14 +34,15 @@
     
 ?>
     <div id="add_news" class="span-10"> 
-        <form action="add/add_news.php" method="POST">
+        <form action="add/add_news.php" method="post">
             <h3>Add News: </h3>
             
             <h4>Title:</h4>
-            <input type="text" id="news_title"/>
+            <input type="text" name="news_title" />
             
             <h4>Article:</h4>
-            <textarea id="news_article"></textarea>
+            <textarea name="news_article" ></textarea>
+            
             <input type="submit" value="Submit"/>
         </form> <br/> <br/>
     </div>

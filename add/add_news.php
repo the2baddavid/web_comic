@@ -3,7 +3,7 @@
 /*
  * Add News Script
  * 
- * TODO: Fix, populating blank info from get variable
+ * TODO: 
  * 
  * Removed inclusions since they are not needed
  */
@@ -20,13 +20,14 @@
     add_news($con,$_POST);
     ?>    
  
-<div id="revert" onLoad="setTimeout('move()', 1000)"></div>
+    <div id="revert" onLoad="setTimeout('move()', 1000)"></div>
 
     <script type="text/javascript">
         function move(){
             window.location='../index.php';
         }
-    </script>   
+    </script> 
+    
     
     <?php
 /****************************************************************
@@ -44,9 +45,7 @@ function add_news($db,$post)
     if(!$success) 
         die("<p> Uh, something went wrong...<br/>".mysql_error()."<br/>".$query."</p>");
     else 
-        echo "<p> Successful Upload </br>
-            Title: $title <br/>
-            Article: $article</p>";
+        echo "<p> Successful Upload </p>";
 }
 ?>
 
