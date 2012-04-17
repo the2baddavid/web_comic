@@ -3,8 +3,8 @@
 /*
  * Admin Page
  * 
- * Function calls for uploading/editing extras?
- * 
+ * TODO: Function calls for uploading/editing extras?
+ * TODO: Add JS Form Validation
  * 
  */
 
@@ -47,12 +47,12 @@
     </div>
 
     <div id="add_comic" class="span-10" style="float:right">
-        <form action="add/add_comic.php" method="POST">
+        <form action="add/add_comic.php" method="post" enctype="multipart/form-data">
             <h3>Add Comic: </h3>
             
             <h4>Add to Existing Book, or Create New?</h4>
-            <input type="radio" name="book_name" value="yes"/> New Book
-            <input type="text" name="new_name" ></input><br/>
+            <input type="radio" name="new_name" value="yes"/> New Book
+            <input type="text" name="book_name" ></input><br/>
             <?php
                 display_book_choices($con); 
             ?><br/>
