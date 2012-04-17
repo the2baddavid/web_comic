@@ -13,7 +13,6 @@
  ****************************************************************/
 
     include_once('modules/modules.php');
-    include_once('database/db_object.php');  
     include_once('queries/get_comics.php');   // Sometimes Causes 500 error
 
     $con = mysql_connect("localhost","user","pass");
