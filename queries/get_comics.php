@@ -44,15 +44,12 @@ function comics_get_book_and_comic($db,$book)
                 ORDER BY chapter";
     $result = mysql_query($query,$db) or die("bad query");
     
-    return mysql_fetch_assoc($result);
-    /*
     $comic = array();
     while($temp = mysql_fetch_assoc($result))
     {
         array_push($comic,$temp);
     }
     return $comic;
-    */
 }
 
 /**

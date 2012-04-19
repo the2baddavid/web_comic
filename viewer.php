@@ -22,7 +22,7 @@
 
     $con = mysql_connect("localhost","user","pass");
     if(!$con) die('Could not connect: ' . mysql_error());
-    mysql_select_db("webcomic",$con);
+    mysql_select_db("webcomic",$con) or die ("couldn't select db");
 /****************************************************************
  * Start Web Page! Load Modules
  ****************************************************************/
@@ -36,16 +36,27 @@
 echo '<div id="comic-viewer" class="span-12">';
     // Extract $_GET info
     $book = $_GET['book'];
-    $chapter = $_GET['chapter'];
+    $chapter = $_GET['chapter']-1;
     
-    // Query Database
-    $comics = comics_get_book_and_comic($con, $book);
+    // Query Database -THIS IS THE ONE THAT SHOULD BE USED, BUT IS CRASHING
+    //$comics = comics_get_book_and_comic($con, $book);
     
-    // print book & chapter
-    echo "<h3>".$_GET['book']."</h3>";
+    // *********** DEBUGGING STUFF*****************************
+    // ////////////////////////////////////////////////////////
+    // Test With What the database SHOULD return
+    $comics = array();
+    $comics[$chapter]['b_name'] = "TEST!";
+    $comics[$chapter]['chapter'] = 1;
+    $comics[$chapter]['image_path'] = 'comics/sample.jpg';
+    echo "<p>".$comics[$chapter]['image_path']."</p>";
+    ///////////////////////////////////////////////////////////
+    //************ End Debug Stuff ******************************
     
-    // print selected image from book
-    echo "<img href=".$comics[$chapter]." id='current-comic'/>";
+    // print book & chapter -- Prints 
+    echo "<h3>".$comics[$chapter]['b_name'].$comics[$chapter]['chapter']."</h3>";
+    
+    // print selected image from book -- Still Not showing...
+    echo "<img href='comics/sample.jpg' id=".$_GET['book'].$_GET['chapter']." height='800' width='400'> </img>";
     
     // print caption?
     
