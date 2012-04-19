@@ -24,7 +24,7 @@
  * Unique Page Info
  ****************************************************************/
 ?>
-<div id="extras" class="span-14"
+<div id="extras" class="span-14">
      
      
 </div>
