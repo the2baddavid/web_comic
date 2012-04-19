@@ -9,7 +9,6 @@
  * Inclusions & Database Connecting
  ****************************************************************/
     include_once('modules/modules.php');
-    include_once('database/db_object.php');  
     include_once('queries/get_about.php');
     include_once('queries/get_images.php');
 

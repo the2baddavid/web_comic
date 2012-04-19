@@ -3,6 +3,8 @@
 /*
  * Add News Script
  * 
+ * TODO: Add Auto Revert Back to Page with JS? 
+ * 
  * Removed inclusions since they are not needed
  */
 /****************************************************************
@@ -15,18 +17,19 @@
 /****************************************************************
  * Load web page, then revert back after adding
  ****************************************************************/
-    add_news($con,$_POST);
-    ?>    
- 
-<div id="revert" onLoad="setTimeout('move()', 1000)"></div>
-
+    echo <<< _END
+    
+    <html><head>
     <script type="text/javascript">
         function move(){
             window.location='../index.php';
         }
-    </script>   
+    </script>
+    <body onload="setTimeout('move()', 1000)">
+_END;
     
-    <?php
+    add_news($con,$_POST);
+	echo "</body></head></html>";
 /****************************************************************
  * Functions
  ****************************************************************/
@@ -42,9 +45,9 @@ function add_news($db,$post)
     if(!$success) 
         die("<p> Uh, something went wrong...<br/>".mysql_error()."<br/>".$query."</p>");
     else 
-        echo "<p> Successful Upload </br>
-            Title: $title <br/>
-            Article: $article</p>";
+        echo "  <p> Successful Upload </p>
+                <a href='admin.php'>Admin</a> 
+                <a href='index.php>Home</a>";
 }
 ?>
 
