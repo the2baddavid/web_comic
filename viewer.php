@@ -19,6 +19,7 @@
     include_once('modules/modules.php'); 
     include_once('queries/get_about.php');
     include_once('queries/get_images.php');
+    include_once('queries/get_comics.php');
 
     $con = mysql_connect("localhost","user","pass");
     if(!$con) die('Could not connect: ' . mysql_error());
@@ -39,24 +40,24 @@ echo '<div id="comic-viewer" class="span-12">';
     $chapter = $_GET['chapter']-1;
     
     // Query Database -THIS IS THE ONE THAT SHOULD BE USED, BUT IS CRASHING
-    //$comics = comics_get_book_and_comic($con, $book);
+    $comics = comics_get_book_and_comic($con, $book);
     
     // *********** DEBUGGING STUFF*****************************
     // ////////////////////////////////////////////////////////
     // Test With What the database SHOULD return
-    $comics = array();
+    /*$comics = array();
     $comics[$chapter]['b_name'] = "TEST!";
     $comics[$chapter]['chapter'] = 1;
     $comics[$chapter]['image_path'] = 'comics/sample.jpg';
-    echo "<p>".$comics[$chapter]['image_path']."</p>";
+    echo "<p>".$comics[$chapter]['image_path']."</p>"; 
     ///////////////////////////////////////////////////////////
-    //************ End Debug Stuff ******************************
+    //************ End Debug Stuff ****************************** */
     
     // print book & chapter -- Prints 
     echo "<h3>".$comics[$chapter]['b_name'].$comics[$chapter]['chapter']."</h3>";
     
     // print selected image from book -- Still Not showing...
-    echo "<img href='comics/sample.jpg' id=".$_GET['book'].$_GET['chapter']." height='800' width='400'> </img>";
+    echo "<img href='/comics/sample.jpg' id=".$_GET['book'].$_GET['chapter']." height='800' width='400'> </img>";
     
     // print caption?
     

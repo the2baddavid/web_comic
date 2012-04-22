@@ -18,7 +18,7 @@ function display_start()
         <link rel="stylesheet" href="blueprint/blueprint/screen.css" type="text/css" media="screen,projection" />
         <link rel="stylesheet" href="blueprint/blueprint/print.css"  type="text/css" media="print" />
         <!--[if lt IE 8]><link rel="stylesheet" href="blueprint/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
-        <link rel="stylesheet" href="style.css" type="text/css">
+        
         
         <style type="text/css">
 			body
@@ -29,7 +29,7 @@ function display_start()
     </head>
 
     <body>
-        <div class="container">
+        <div class="container"style="font-size:17px;background-color:#C0C0C0;">
 _END;
 }
 

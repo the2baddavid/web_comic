@@ -5,33 +5,33 @@
  * and open the template in the editor.
  */
 
-function get_about_latest($db)
+function get_about_latest($con)
 {
     $query = "SELECT article
                 FROM news
                 WHERE name='about'
                 ORDER BY date_added DESC
                 LIMIT 0,1";
-    $result = mysql_query($query,$db) or die("bad query");
+    $result = mysql_query($query,$con) or die("bad query");
     $about = mysql_fetch_assoc($result);
     
     return $about['article'];
 }
 
 
-function get_about_all($db)
+function get_about_all($con)
 {
     $query = "SELECT article
                 FROM news
                 WHERE name='about'
                 ORDER BY date_added DESC";
-    $db->query($query);
-    $about = $db->getAllRowsSock();
+    $con->query($query);
+    $about = $con->getAllRowsSock();
     
     return $about;
 }
 
-function get_about_specific($db,$about_num)
+function get_about_specific($con,$about_num)
 {
     if($about_num < 1) return "bad value";
     $query = "SELECT article
@@ -39,8 +39,8 @@ function get_about_specific($db,$about_num)
                 WHERE name='about'
                 ORDER BY date_added DESC
                 LIMIT ".($about_num-1).",$about_num";
-    $db->query($query);
-    $about = $db->getRowSock();
+    $con->query($query);
+    $about = $con->getRowSock();
     
     return $about;
 }
