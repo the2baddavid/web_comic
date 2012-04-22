@@ -35,7 +35,7 @@
  ****************************************************************/
 
 echo '<div id="comic-viewer" class="span-12">';
-    // Extract $_GET info
+    // Extract $_GET info -- TODO: Book isn't receiving the correct info
     $book = $_GET['book'];
     $chapter = $_GET['chapter']-1;
     
@@ -54,10 +54,11 @@ echo '<div id="comic-viewer" class="span-12">';
     //************ End Debug Stuff ****************************** */
     
     // print book & chapter -- Prints 
-    echo "<h3>".$comics[$chapter]['b_name'].$comics[$chapter]['chapter']."</h3>";
+    echo "<h3>".$comics[$chapter]['b_name']."</h3>";
+    echo "<h4> Chapter ".$comics[$chapter]['chapter']."</h4>";
     
     // print selected image from book -- Still Not showing...
-    echo "<img href='/comics/sample.jpg' id=".$_GET['book'].$_GET['chapter']." height='800' width='400'> </img>";
+    echo "<img href='/comics/sample.jpg' id=".$_GET['book'].$_GET['chapter']." height='800' width='400' alt='comic'</img>";
     
     // print caption?
     
