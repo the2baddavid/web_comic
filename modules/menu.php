@@ -8,7 +8,7 @@
 function display_menu()
 {
     echo <<< _END
-    <div id="menu" class="span-24">
+    <div id="menu" class="span-24"style="font-size:30px;">
         <table>
         <tr>
             <td><a href="index.php" id="menu-home">Home</a></td>

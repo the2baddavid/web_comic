@@ -13,17 +13,17 @@
 
 /**
  *  Returns Path for Specific Image
- * @param type $db  database pointer
+ * @param type $con  database pointer
  * @param type $id  Id of specific image
  * @return type     image path
  */
-function images_get_image_by_id($db,$id)
+function images_get_image_by_id($con,$id)
 {
     $query = "SELECT image_path
                 FROM images
                 WHERE id = $id";
     
-    $result = mysql_query($query,$db) or die("bad query");
+    $result = mysql_query($query,$con) or die("bad query");
     $image = mysql_fetch_assoc($result);   
     
     return $image['image_path'];
@@ -31,17 +31,17 @@ function images_get_image_by_id($db,$id)
 
 /**
  *  Returns Path for Specific Image
- * @param type $db database pointer
+ * @param type $con database pointer
  * @param type $name name of image to find
  * @return type path of image
  */
-function images_get_image_by_name($db,$name)
+function images_get_image_by_name($con,$name)
 {
     $query = "SELECT image_path
                 FROM images
                 WHERE i_name = '$name'";
     
-    $result = mysql_query($query,$db) or die("bad query");
+    $result = mysql_query($query,$con) or die("bad query");
     $image = mysql_fetch_assoc($result);   
     
     return $image['image_path'];
@@ -49,15 +49,15 @@ function images_get_image_by_name($db,$name)
 
 /**
  *  Gets All the images with names and path
- * @param type $db  database pointer
+ * @param type $con  database pointer
  * @return type Sock Array for all the Images
  */
-function images_get_all_images($db)
+function images_get_all_images($con)
 {
     $query = "SELECT name,image_path
                 FROM images";
     
-    $result = mysql_query($query,$db) or die("bad query");
+    $result = mysql_query($query,$con) or die("bad query");
     
     $image = array();
     while($temp= mysql_fetch_assoc($result))

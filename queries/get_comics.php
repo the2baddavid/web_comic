@@ -15,16 +15,16 @@
 
 /**
  *  Gets latest comic added
- * @param type $db  database pointer
+ * @param type $con  database pointer
  * @return type image path for latest comic
  */
-function comics_get_latest($db)
+function comics_get_latest($con)
 {
     $query = "SELECT image_path
                 FROM comics
                 ORDER BY id DESC
                 LIMIT 0,1";
-    $result = mysql_query($query,$db) or die("bad query");
+    $result = mysql_query($query,$con) or die("bad query");
     $comic = mysql_fetch_assoc($result);   
     
     return $comic['image_path'];
@@ -32,17 +32,17 @@ function comics_get_latest($db)
 
 /**
  *  Gets All Comics For Specified Book
- * @param type $db  database pointer
+ * @param type $con  database pointer
  * @param type $book    book name
  * @return type Sock Array of all comics for book, with bookname, chapter, imagepath
  */
-function comics_get_book_and_comic($db,$book)
+function comics_get_book_and_comic($con,$book)
 {
     $query = "SELECT book_names.b_name, comics.chapter, comics.image_path
                 FROM comics,book_names
                 WHERE comics.book = $book AND comics.book = book_names.id
                 ORDER BY chapter";
-    $result = mysql_query($query,$db) or die("bad query");
+    $result = mysql_query($query,$con) or die("bad query");
     
     $comic = array();
     while($temp = mysql_fetch_assoc($result))
@@ -54,14 +54,14 @@ function comics_get_book_and_comic($db,$book)
 
 /**
  *  Gets all book names & ids
- * @param type $db
+ * @param type $con
  * @return array 
  */
-function comics_get_books($db)
+function comics_get_books($con)
 {
     $query = "SELECT *
                 FROM book_names";
-    $result = mysql_query($query,$db);
+    $result = mysql_query($query,$con);
     
     $books = array();
     while($temp = mysql_fetch_assoc($result))
@@ -73,16 +73,16 @@ function comics_get_books($db)
 
 /**
  *  Gets all comics & info for specified Book
- * @param type $db
+ * @param type $con
  * @param type $book
  * @return array 
  */
-function comics_get_chapters($db,$book)
+function comics_get_chapters($con,$book)
 {
     $query = "SELECT *
             FROM comics
             WHERE book = $book";
-    $result = mysql_query($query,$db);
+    $result = mysql_query($query,$con);
     
     $comic = array();
     while($temp = mysql_fetch_assoc($result))
@@ -94,12 +94,12 @@ function comics_get_chapters($db,$book)
 
 /**
  *  Gets Prints Proper HTML line to display book names straight into radio choices
- * @param type $db 
+ * @param type $con 
  */
-function display_book_choices($db)
+function display_book_choices($con)
 {
     $query = "SELECT b_name FROM book_names";
-    $result = mysql_query($query,$db);
+    $result = mysql_query($query,$con);
         
     while ($temp = mysql_fetch_assoc($result))
     {

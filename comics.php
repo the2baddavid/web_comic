@@ -14,6 +14,8 @@
  ****************************************************************/
     include_once('modules/modules.php'); 
     include_once('queries/get_comics.php');
+    include_once('queries/get_images.php');
+    include_once('queries/get_comics.php');
 
     $con = mysql_connect("localhost","user","pass");
     if(!$con) die('Could not connect: ' . mysql_error());
@@ -42,7 +44,7 @@
         foreach ($book as $temp_book)
         {
             echo "<h3>".$temp_book['b_name']."</h3>";
-            $chapter = comics_get_chapters($con, $temp_book['id']);
+            $chapter = comics_get_book_and_comic($con, $temp_book['id']);
             
             foreach($chapter as $temp_chapter)
             {
