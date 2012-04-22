@@ -58,7 +58,7 @@ echo '<div id="comic-viewer" class="span-12">';
     echo "<h4> Chapter ".$comics[$chapter]['chapter']."</h4>";
     
     // print selected image from book -- Still Not showing...
-    echo "<img href='/comics/sample.jpg' id=".$_GET['book'].$_GET['chapter']." height='800' width='400' alt='comic'</img>";
+    echo "<img href='comics/sample.jpg' id=".$_GET['book'].$_GET['chapter']." height='800' width='400' alt='comic'</img>";
     
     // print caption?
     
