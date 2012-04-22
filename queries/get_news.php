@@ -7,10 +7,10 @@
 
 /**
  *  Returns Latest Entry for News
- * @param type $db Pointer to db object
+ * @param type $con Pointer to db object
  * @return type News article found
  */
-function news_get_latest($db)
+function news_get_latest($con)
 {
     $query = "SELECT name,article
                 FROM news
@@ -18,7 +18,7 @@ function news_get_latest($db)
                 ORDER BY news.id DESC
                 LIMIT 0,1";
     
-    $result = mysql_query($query,$db) or die("bad query");
+    $result = mysql_query($query,$con) or die("bad query");
     $news = mysql_fetch_assoc($result);
     
     return $news;
@@ -27,11 +27,11 @@ function news_get_latest($db)
 
 /**
  *
- * @param type $db type $db Pointer to db object
+ * @param type $con type $con Pointer to db object
  * @param type $date find specfic article by date added
  * @return type News article found
  */
-function news_get_news_date($db,$date)
+function news_get_news_date($con,$date)
 {
     $query = "SELECT name,date_added,article
                 FROM news
@@ -40,7 +40,7 @@ function news_get_news_date($db,$date)
                 ORDER BY date_added DESC
                 LIMIT 0,1";
     
-    $result = mysql_query($query,$db) or die("bad query");
+    $result = mysql_query($query,$con) or die("bad query");
     $news = mysql_fetch_assoc($result);
     
     return $news;
@@ -48,17 +48,17 @@ function news_get_news_date($db,$date)
 
 /**
  *
- * @param type $db type $db Pointer to db object
+ * @param type $con type $con Pointer to db object
  * @param type $number find specific article by order added
  * @return type News article found
  */
-function news_get_news_number($db,$number)
+function news_get_news_number($con,$number)
 {
     $query = "SELECT name,date_added,article
                 FROM news
                 WHERE id = $number";
     
-    $result = mysql_query($query,$db) or die("bad query");
+    $result = mysql_query($query,$con) or die("bad query");
     $news = mysql_fetch_assoc($result);
     
     return $news;
