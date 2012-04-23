@@ -47,7 +47,7 @@ function add_comic($con,&$post)
     }
     
     elseif(move_uploaded_file($_FILES['uploaded']['tmp_name'], $target)){
-        echo "The file ". basename( $_FILES['uploadedfile']['name']). " has been uploaded";
+        echo "The file ". basename( $_FILES['uploaded']['name']). " has been uploaded";
     }
     
     else{
@@ -59,32 +59,42 @@ function add_comic($con,&$post)
  {
      $path = "comics/";
 
-    if ((($files["file"]["type"] == "image/gif")
-    || ($files["file"]["type"] == "image/jpeg")
-    || ($files["file"]["type"] == "image/pjpeg")))
+    if ((($files["uploaded"]["type"] == "image/gif")
+    || ($files["uploaded"]["type"] == "image/jpeg")
+    || ($files["uploaded"]["type"] == "image/pjpeg")))
     {
-        if ($files["file"]["error"] > 0)
+        if ($files["uploaded"]["error"] > 0)
         {
-            echo "Return Code: " . $files["file"]["error"] . "<br />";
+            echo "Return Code: " . $files["uploaded"]["error"] . "<br />";
         }
         else
         {
-            echo "Upload: " . $files["file"]["name"] . "<br />";
-            echo "Type: " . $files["file"]["type"] . "<br />";
-            echo "Size: " . ($files["file"]["size"] / 1024) . " Kb<br />";
-            echo "Temp file: " . $files["file"]["tmp_name"] . "<br />";
+            echo "Upload: " . $files["uploaded"]["name"] . "<br />";
+            echo "Type: " . $files["uploaded"]["type"] . "<br />";
+            echo "Size: " . ($files["uploaded"]["size"] / 1024) . " Kb<br />";
+            echo "Temp file: " . $files["uploaded"]["tmp_name"] . "<br />";
 
-            if (file_exists($path . $files["file"]["name"]))
+            if (file_exists($path . $files["uploaded"]["name"]))
             {
-                echo $files["file"]["name"] . " already exists. ";
+                echo $files["uploaded"]["name"] . " already exists. ";
             }
             else
             {   //  Success Condition!
-                move_uploaded_file($files["file"]["tmp_name"],
-                $path . $files["file"]["name"]);
-                echo "Stored in: " . "upload/" . $files["file"]["name"];
+                move_uploaded_file($files["uploaded"]["tmp_name"],
+                $path . $files["uploaded"]["name"]);
+                echo "Stored in: " . "comics/" . $files["uploaded"]["name"];
 
-                // TODO: Add Database Update!
+    // TODO: Add Database Update!
+            }
+        }
+    }
+    else
+    {
+        echo "Invalid file";
+    }
+}
+
+            
                 /*
                  if( $post['new_name']=='yes')
                  {  
@@ -105,12 +115,4 @@ function add_comic($con,&$post)
                 
 
                  */
-            }
-        }
-    }
-    else
-    {
-        echo "Invalid file";
-    }
-}
 ?>
