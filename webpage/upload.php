@@ -1,4 +1,9 @@
-<?php // upload.php
+<?php
+/*
+ *  upload.php
+ * 
+ *  DONT FORGET TO ADD PERMISSIONS FOR www-data ON THE TARGET FOLDER
+ */
 echo <<<_END
 <html><head><title>PHP Form Upload</title></head><body>
     <form method='post' action='upload.php' enctype='multipart/form-data'>

@@ -14,6 +14,7 @@
 
     include_once('modules/modules.php');
     include_once('queries/get_comics.php');   // Sometimes Causes 500 error
+    include_once('add/add_comic');
 
     $con = mysql_connect("localhost","user","pass");
     if(!$con) die('Could not connect: ' . mysql_error());
@@ -58,7 +59,7 @@
             ?><br/>
             
             <h4>Select Comic File:</h4>
-            <input name="uploaded" type="file"/><br/>
+            <input name="new_comic" type="file"/><br/>
             <input type="submit" value="Upload"/>
         </form>
     </div>
