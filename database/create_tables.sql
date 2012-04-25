@@ -11,7 +11,7 @@ CREATE TABLE news(
 
 CREATE TABLE comics(
     id INT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
-    book VARCHAR(50),
+    book INT,
     chapter INT,
     date_added DATE,
     image_path VARCHAR(50)) ENGINE INNODB;

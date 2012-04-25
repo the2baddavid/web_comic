@@ -98,12 +98,12 @@ function comics_get_chapters($con,$book)
  */
 function display_book_choices($con)
 {
-    $query = "SELECT b_name FROM book_names";
+    $query = "SELECT id,b_name FROM book_names";
     $result = mysql_query($query,$con);
         
     while ($temp = mysql_fetch_assoc($result))
     {
-        echo "<input name='book_name' type='radio' value=".$temp['b_name'].">".$temp['b_name']." </input><br/>";
+        echo "<input name='book' type='radio' value=".$temp['id'].">".$temp['b_name']." </input><br/>";
     }
 }
 ?>

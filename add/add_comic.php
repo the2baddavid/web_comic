@@ -53,7 +53,7 @@ _END;
     
     if(count($files)){ 
         //  1--
-        $path = '../comics/' . rand(0, 99999999) . '.jpg';
+        $path = 'comics/' . rand(0, 99999999) . '.jpg';
         
         //  2--
         if (!(($files["new_comic"]["type"] == "image/gif") || ($files["new_comic"]["type"] == "image/jpeg") || ($files["new_comic"]["type"] == "image/pjpeg")))
@@ -66,14 +66,14 @@ _END;
         echo "</pre>";
 
         //  4--
-        if(!copy($files['new_comic']['tmp_name'], $path) ){ 
+        if(!copy($files['new_comic']['tmp_name'], '../' . $path) ){ 
             echo "error ".$files['new_comic']['error'];
         }
         else{
             //  5--
             comic_add_to_database($con,$post,$path);
             //  6--
-            echo "<img src=$path id='new_comic' ></img>";
+            echo "<img src= '../$path' id='new_comic' ></img>";
         }
     }   
     echo "</body></html>";
@@ -97,31 +97,35 @@ function comic_add_to_database($con,$post,$path){
      * *********************************************************************
      */
     
+    echo '<pre>';
+    print_r($post);
+    echo '</pre>    ';
+    
     //  1--
     if( $post['new_name']=='yes'){                  
-        $book_name = $post['new_name'];
+        $b_name = $post['book'];
         $query = "INSERT INTO book_names (b_name) VALUES ($book_name)";
         mysql_query($query,$con);
+        
+    //  2--
+        $query = "SELECT id
+            FROM book_names
+            ORDER BY id
+            LIMIT 0,1";
+        $result = mysql_query($query,$con);
+        $book = mysql_fetch_field($result);
     }
     else{
-        $book_name = $post['book_name'];
+        echo "existing book";
+        $book = $post['book'];
     }
-    
-    //  2--
-    $query = "SELECT id
-        FROM book_names
-        WHERE b_name = $book_name
-        ORDER BY id DESC
-        LIMIT 0,1";
-    mysql_query($query,$con);
-    $book_id = mysql_result(0, 0);
     
     //  3--
     $query = "SELECT id
         FROM comics
-        WHERE book = $book_id";
-    mysql_query($query,$con);
-    $chapter = mysql_result(0, 0);
+        WHERE book = $book";
+    $result = mysql_query($query,$con);
+    $chapter = mysql_num_rows($result);
     
     if(!isSet($chapter))
         $chapter = 1;
@@ -130,7 +134,8 @@ function comic_add_to_database($con,$post,$path){
     
     //  4--
     $query="INSERT INTO comics (book,chapter,date_added,image_path) 
-        VALUES ('$book_id',$chapter,CURDATE(),'$path')";
-    mysql_query($query, $con) or die("Database Failed chapter:$chapter book:$book_id,".  mysql_error());
+        VALUES ($book,$chapter,CURDATE(),'$path')";
+    mysql_query($query, $con) or die("Database Failed chapter:$chapter book:$book,".  mysql_error());
+    echo "<p>success chapter:$chapter book:$book</p>";
 }            
 ?>
