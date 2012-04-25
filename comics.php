@@ -48,10 +48,12 @@
             
             foreach($chapter as $temp_chapter)
             {
-                echo "<a href='viewer.php?book=".$temp_book['id']."&chapter=".$temp_chapter['chapter']."'>".$temp_chapter['chapter']."</a><br/>";
+                echo "<a href='viewer.php?book=".$temp_book['id']."&chapter=".$temp_chapter['chapter']."'>Chapter ".$temp_chapter['chapter']."</a><br/>";
             }
+            
         }
     ?>
+<br/><br/>
 </div>
 
 <?php
