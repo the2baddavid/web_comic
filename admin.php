@@ -16,9 +16,7 @@
     include_once('queries/get_comics.php');   // Sometimes Causes 500 error
     include_once('add/add_comic');
 
-    $con = mysql_connect("localhost","user","pass");
-    if(!$con) die('Could not connect: ' . mysql_error());
-    mysql_select_db("webcomic",$con);
+    $con = connection_start();
    
 /****************************************************************
  * Start Web Page! Load Modules

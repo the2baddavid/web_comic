@@ -10,9 +10,9 @@
 /****************************************************************
  * Inclusions & Database Connecting
  ****************************************************************/
-   $con = mysql_connect("localhost","user","pass");
-    if(!$con) die('Could not connect: ' . mysql_error());
-    mysql_select_db("webcomic",$con);
+    include_once('connection.php');
+    
+	$con = connection_start();
 
 /****************************************************************
  * Load web page, then revert back after adding

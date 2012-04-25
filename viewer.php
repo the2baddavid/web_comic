@@ -3,7 +3,6 @@
 /*
  *  Standalone Viewer for comics
  * 
- * TODO: Image not showing up
  * TODO: Use JS to scroll through images
  * TODO: Caption for images?
  * 
@@ -21,9 +20,7 @@
     include_once('queries/get_images.php');
     include_once('queries/get_comics.php');
 
-    $con = mysql_connect("localhost","user","pass");
-    if(!$con) die('Could not connect: ' . mysql_error());
-    mysql_select_db("webcomic",$con) or die ("couldn't select db");
+    $con = connection_start();
 /****************************************************************
  * Start Web Page! Load Modules
  ****************************************************************/
@@ -35,7 +32,7 @@
  ****************************************************************/
 
 echo '<div id="comic-viewer" class="span-12">';
-    // Extract $_GET info -- TODO: Book isn't receiving the correct info
+    // Extract $_GET info --
     $book = $_GET['book'];
     $chapter = $_GET['chapter']-1;
     
@@ -57,7 +54,7 @@ echo '<div id="comic-viewer" class="span-12">';
     echo "<h3>".$comics[$chapter]['b_name']."</h3>";
     echo "<h4> Chapter ".$comics[$chapter]['chapter']."</h4>";
     
-    // print selected image from book -- Still Not showing...
+    // print selected image from book -- 
     echo "<img src=".$comics[$chapter]['image_path']." id=".$_GET['book'].$_GET['chapter']." height='800' width='400' alt='comic' />";
     
     // print caption?

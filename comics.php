@@ -17,9 +17,7 @@
     include_once('queries/get_images.php');
     include_once('queries/get_comics.php');
 
-    $con = mysql_connect("localhost","user","pass");
-    if(!$con) die('Could not connect: ' . mysql_error());
-    mysql_select_db("webcomic",$con);
+    $con = connection_start();
 /****************************************************************
  * Start Web Page! Load Modules
  ****************************************************************/
