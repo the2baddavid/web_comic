@@ -20,6 +20,7 @@ echo <<< _END
                     
 		</div>
 	</div> <!-- Close Container -->
+	</div> <!-- Close Background -->
 </body>     <!-- Close Body -->
 </html>
 _END;
