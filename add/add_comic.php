@@ -10,16 +10,16 @@
 /****************************************************************
  * Inclusions & Database Connecting
  ****************************************************************/
-    include_once('queries/get_comics.php');
+    include_once('modules/connection.php');
+	include_once('queries/get_comics.php');
 
-    $con = mysql_connect("localhost","user","pass");
-    if(!$con) header('../Admin.php?error=Could_not_connect');
-    mysql_select_db("webcomic",$con);
+    $con = connection_start();
 /****************************************************************
  * Load web page, then revert back after adding
  ****************************************************************/
 
     upload_it($con, $_POST, $_FILES);
+    header('index.php');
 
 /****************************************************************
  * Functions
@@ -28,42 +28,54 @@
 function upload_it($con, $post, $files){
     
     /*
-     * 
+     * Print Initialization Info for the Browser
      * 
      * If files has anything in it:
      *      1 Create New Name for it
      *      2 Check that it is a jpeg, png or gif
+     *      3 Print file info
      *      4 Copy file from temp, print error if there is one
      *      5 Add To Database
      *      6 Display Image if Successful
      * 
-     * 
+     * Finish Browser Junk
      */
+    
+    echo <<<_END
+    <html>
+        <head>
+            <title>Upload</title>
+        </head>
+        <body>
+_END;
+    
     
     if(count($files)){ 
         //  1--
-        $path = 'comics/' . rand(0, 99999999) . '.jpg';
+        $path = '../comics/' . rand(0, 99999999) . '.jpg';
         
         //  2--
-        if (!($files["new_comic"]["type"] == "image/jpeg")){
-            header("../Admin.php?error=file_must_be_jpg");
-            echo "file must be jpg!";
-        }            
+        if (!(($files["new_comic"]["type"] == "image/gif") || ($files["new_comic"]["type"] == "image/jpeg") || ($files["new_comic"]["type"] == "image/pjpeg")))
+            die ("<p>File must be a jpg,png or gif</p></body></html>");
+        
+        //  3--
+        echo "<pre>";
+        print_r ($files);
+        echo '<p>'.$path.'</p>';
+        echo "</pre>";
 
         //  4--
-        if(!copy($files['new_comic']['tmp_name'], '../' . $path) ){ 
-            header("../Admin.php?error=".$files['new_comic']['error']);
-            echo ("../Admin.php?error=".$files['new_comic']['error']);
+        if(!copy($files['new_comic']['tmp_name'], $path) ){ 
+            echo "error ".$files['new_comic']['error'];
         }
         else{
             //  5--
             comic_add_to_database($con,$post,$path);
             //  6--
-            header("../Admin.php?src=$path");
-            echo "<img src= '../$path' id='new_comic' ></img>";
-            echo "<br/><a href='../Admin.php'> Back</a>";
+            echo "<img src=$path id='new_comic' ></img>";
         }
     }   
+    echo "</body></html>";
 }
             
 function comic_add_to_database($con,$post,$path){
@@ -86,39 +98,38 @@ function comic_add_to_database($con,$post,$path){
     
     //  1--
     if( $post['new_name']=='yes'){                  
-        $book_name = $post['book_name'];
-        $query = "INSERT INTO book_names (b_name) VALUES ('$book_name')";
-        mysql_query($query,$con) or die("couldnt create new book" . mysql_error());
-        
-    //  2--
-        $query = "SELECT id
-            FROM book_names
-            ORDER BY id DESC
-            LIMIT 0,1";
-        $result = mysql_query($query,$con);
-        $result = mysql_fetch_row($result) or die("bad id fetch");
-        
-        $book = $result[0];
-        $chapter = 1;
+        $book_name = $post['new_name'];
+        $query = "INSERT INTO book_names (b_name) VALUES ($book_name)";
+        mysql_query($query,$con);
     }
     else{
-        $book = $post['book'];
-        
-        $query = "SELECT id
-        FROM comics
-        WHERE book = $book";
-        
-        $result = mysql_query($query,$con);
-        $chapter = mysql_num_rows($result);
-        
-        $chapter ++;
+        $book_name = $post['book_name'];
     }
+    
+    //  2--
+    $query = "SELECT id
+        FROM book_names
+        WHERE b_name = $book_name
+        ORDER BY id DESC
+        LIMIT 0,1";
+    mysql_query($query,$con);
+    $book_id = mysql_result(0, 0);
+    
+    //  3--
+    $query = "SELECT id
+        FROM comics
+        WHERE book = $book_id";
+    mysql_query($query,$con);
+    $chapter = mysql_result(0, 0);
+    
+    if(!isSet($chapter))
+        $chapter = 1;
+    else
+        $chapter ++;
     
     //  4--
     $query="INSERT INTO comics (book,chapter,date_added,image_path) 
-        VALUES ($book,$chapter,CURDATE(),'$path')" or die("bad comic insert");
-    
-    if(!(mysql_query($query, $con)))
-        header("../Admin.php?error=mysql_error".mysql_error());
+        VALUES ('$book_id',$chapter,CURDATE(),'$path')";
+    mysql_query($query, $con) or die("Database Failed chapter:$chapter book:$book_id,".  mysql_error());
 }            
 ?>
