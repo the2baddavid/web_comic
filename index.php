@@ -37,7 +37,7 @@
     <div id="home-comic" class="span-15">
         <?php
             $comic = comics_get_latest($con);
-            echo "<img id ='comic_latest' alt='latest comic' src=$comic height='800' width='400'> </img>";
+            echo "<img id ='comic_latest' alt='latest comic' src=$comic height='800' width='500'> </img>";
         ?>
     </div>
     

@@ -26,7 +26,7 @@ function connection_start()
  * 
  * Used to close the current database connection
  */
-function connection_close()
+function connection_close($con)
 {
 	mysql_close($con);
 }

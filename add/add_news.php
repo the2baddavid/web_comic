@@ -10,7 +10,7 @@
 /****************************************************************
  * Inclusions & Database Connecting
  ****************************************************************/
-    include_once('connection.php');
+    include_once('add/connection.php');
     
 	$con = connection_start();
 

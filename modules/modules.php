@@ -11,5 +11,5 @@ include_once('footer.php');  //  last thing the user will see
 include_once('error.php');  //  funny error reporting
 include_once ('connection.php'); // information for database connection
 
-connection_close();
+//connection_close($con);
 ?>

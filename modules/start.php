@@ -2,7 +2,7 @@
 /*
  * Start.php
  * 
- * Contains Information needed to display the page
+ * Contains Information needed to display the page background-color:#ADADAD;
  */
 
 function display_start()
@@ -18,18 +18,28 @@ function display_start()
         <link rel="stylesheet" href="blueprint/blueprint/screen.css" type="text/css" media="screen,projection" />
         <link rel="stylesheet" href="blueprint/blueprint/print.css"  type="text/css" media="print" />
         <!--[if lt IE 8]><link rel="stylesheet" href="blueprint/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
-        
+        <link rel="stylesheet"
+	    
         
         <style type="text/css">
-			body
-			{
-        		background-color:#000000;
-        	}
+			
+        grey_back.jpg {
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+        
+		body
+		{
+        	background-image:url('../images/grey_back.jpg');
+        }
+        
 		</style>
     </head>
 
     <body>
-        <div class="container"style="font-size:17px;background-color:#C0C0C0;">
+        <div class="container"style="font-size:16px; background-color:#ADADAD;">
 _END;
 }
 
