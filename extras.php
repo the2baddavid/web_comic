@@ -10,9 +10,7 @@
     include_once('modules/modules.php');
     include_once('queries/get_comics.php');   // causing 500 error, had error in code
 
-    $con = mysql_connect("localhost","user","pass");
-    if(!$con) die('Could not connect: ' . mysql_error());
-    mysql_select_db("webcomic",$con);
+    $con = connection_start();
 /****************************************************************
  * Start Web Page! Load Modules
  ****************************************************************/ 

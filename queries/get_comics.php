@@ -38,7 +38,7 @@ function comics_get_latest($con)
  */
 function comics_get_book_and_comic($con,$book)
 {
-    $query = "SELECT book_names.b_name, comics.chapter, comics.image_path, comics.book
+    $query = "SELECT book_names.b_name, comics.chapter, comics.image_path, comics.book, comics.id
                 FROM comics,book_names
                 WHERE comics.book = $book AND comics.book = book_names.id
                 ORDER BY chapter";
