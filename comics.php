@@ -43,10 +43,12 @@
         {
             echo "<h3>".$temp_book['b_name']."</h3>";
             $chapter = comics_get_book_and_comic($con, $temp_book['id']);
+            $chap = 1;
             
             foreach($chapter as $temp_chapter)
             {
-                echo "<a href='viewer.php?book=".$temp_book['id']."&chapter=".$temp_chapter['chapter']."'>".$temp_chapter['chapter']."</a><br/>";
+                echo "<a href='viewer.php?book=".$temp_book['id']."&chapter=".$chap."'>Page ".$temp_chapter['chapter']++."</a><br/>";
+                $chap++;
             }
         }
     ?>

@@ -86,13 +86,18 @@ echo '<div id="comic-viewer" class="span-12">';
     // print selected image from book -- 
     echo "<img src=".$comics[$chapter]['image_path']." id=".$_GET['book'].$_GET['chapter']." height='800' width='500' alt='comic' />";
 
-    //For use with navication
+    //For use with arrow key navigation
     $next = $chapter+2;
     $last = $chapter--;
  
-    
+    //Print Next button
 	echo "<a id ='next_page' href='viewer.php?book=".$_GET['book']."&chapter=".$next."'>Next</a><br/>";
-	echo "<a id ='previous_page' href='viewer.php?book=".$_GET['book']."&chapter=".$last."'>Previous</a><br/>";
+	
+	//Print Previous button, but only if $last > 0
+	if($last > 0)
+	{
+		echo "<a id ='previous_page' href='viewer.php?book=".$_GET['book']."&chapter=".$last."'>Previous</a><br/>";
+	}
 
 echo '</div>';
 echo "<br />";

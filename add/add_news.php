@@ -34,13 +34,13 @@ _END;
  * Functions
  ****************************************************************/
 
-function add_news($db,$post)
+function add_news($con,$post)
 {
     $title = $post['news_title'];
     $article = $post['news_article'];
     
     $query = "INSERT INTO news(name,article,date_added) VALUES ('$title','$article',CURDATE())";
-    $success = mysql_query($query,$db);
+    $success = mysql_query($query,$con);
     
     if(!$success) 
         die("<p> Uh, something went wrong...<br/>".mysql_error()."<br/>".$query."</p>");
