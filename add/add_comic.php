@@ -1,22 +1,23 @@
 <?php
 
 /*
- *  TODO: Test if add_comic works as a function
- *  TODO: test names for uploaded files
- * 
- *  W3 Resource!
- *  http://www.w3schools.com/php/php_file_upload.asp
- */
+* TODO: Test if add_comic works as a function
+* TODO: test names for uploaded files
+*
+* W3 Resource!
+* http://www.w3schools.com/php/php_file_upload.asp
+*/
 /****************************************************************
- * Inclusions & Database Connecting
- ****************************************************************/
-    include_once('modules/connection.php');
+* Inclusions & Database Connecting
+****************************************************************/
     include_once('queries/get_comics.php');
 
-    $con = connection_start();
+    $con = mysql_connect("localhost","user","pass");
+    if(!$con) die('Could not connect: ' . mysql_error());
+    mysql_select_db("webcomic",$con);
 /****************************************************************
- * Load web page, then revert back after adding
- ****************************************************************/
+* Load web page, then revert back after adding
+****************************************************************/
 
     upload_it($con, $_POST, $_FILES);
     header('index.php');
